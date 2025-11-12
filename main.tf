@@ -45,9 +45,6 @@ resource "aws_ec2_instance_state" "main" {
   depends_on = [terraform_data.main]
 }
 
-resource "random_pet" "ami_suffix" {
-  length = 2
-}
 resource "aws_ami_from_instance" "main" {
   name               = "${local.common_name_suffix}-${var.component}-ami"
   source_instance_id = aws_instance.main.id
